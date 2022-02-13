@@ -7,13 +7,10 @@ total web searches so this is not a fair comparison. It was intended as a projec
 # import the libraries
 from pytrends.request import TrendReq
 import matplotlib.pyplot as plt
-import numpy as np
 
 pytrendU = TrendReq(hl='en-US', tz=360)
 
 plt.style.use('ggplot')
-N = 5
-ind = np.arange(N)
 
 # search terms for base unis
 value_list = ['uoft', 'university of waterloo', 'university of british columbia', 'university of ottawa', 'mcmaster']
@@ -51,14 +48,12 @@ acceptance_rate_vals = [67, 51, 37, 19, 49]
 print("This visualizes Google Trends Data for Canadian University Searches.")
 
 val_pos = [i for i, _ in enumerate(value_list)]
-width = 0.35
-plt.bar(ind, chart_vals, width, color='green', label='Overall University Searches')
-plt.bar(ind + width, acceptance_rate_vals, width, color='purple', label='Acceptance Rate Searches')
+
+plt.bar(val_pos, chart_vals, color='green')
 plt.xlabel("University Name")
 plt.ylabel("Search Amount")
 plt.title("What Canadian University has the most searches?")
 
 plt.xticks(val_pos, value_list)
-plt.legend(loc='best')
 
 plt.show()
