@@ -2,13 +2,12 @@
 There are problems with this- ie that google trends gives data as relative to total searches for that amount rather than
 total web searches so this is not a fair comparison. It was intended as a project to learn matplotlib and pandas.
 """
-
-
 # import the libraries
 from pytrends.request import TrendReq
 import matplotlib.pyplot as plt
 import numpy as np
 
+# define request
 pytrendU = TrendReq(hl='en-US', tz=360)
 
 plt.style.use('ggplot')
@@ -45,15 +44,19 @@ chart_vals = []
 for i in range(len(value_list)):
     chart_vals.append(regiondf.iat[0, i]+50)
 
+# make array for theoretical amount of searches about acceptance rate
 acceptance_rate_vals = [67, 51, 37, 19, 49]
 
 
 print("This visualizes Google Trends Data for Canadian University Searches.")
 
 val_pos = [i for i, _ in enumerate(value_list)]
+
 width = 0.35
+# define bars
 plt.bar(ind, chart_vals, width, color='green', label='Overall University Searches')
-plt.bar(ind + width, acceptance_rate_vals, width, color='purple', label='Acceptance Rate Searches')
+plt.bar(ind + width, acceptance_rate_vals, width, color='blue', label='Acceptance Rate Searches')
+# labels and titles
 plt.xlabel("University Name")
 plt.ylabel("Search Amount")
 plt.title("What Canadian University has the most searches?")
